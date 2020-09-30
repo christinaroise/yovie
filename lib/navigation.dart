@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yovie_app/main.dart';
 import 'package:yovie_app/screens/home.dart';
 import 'package:yovie_app/screens/play.dart';
+import 'package:yovie_app/theme/style.dart';
 
 class Navigation extends StatefulWidget {
   @override

@@ -35,7 +35,7 @@ class _CustomAppbarState extends State<CustomAppbar> with SingleTickerProviderSt
       ),
       automaticallyImplyLeading: false,
       elevation: 0,
-      backgroundColor: CustomTheme.whiteColor,
+      backgroundColor: Colors.transparent,
       actions: <Widget>[
         Padding(
             padding: EdgeInsets.only(right: 20.0),

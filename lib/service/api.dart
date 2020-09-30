@@ -1,12 +1,13 @@
 import 'package:http/http.dart' as http;
+import 'package:yovie_app/models/pose.dart';
 import 'dart:convert';
 
 class ApiService {
 
-  Future<dynamic> fetchData(url) async {
+  Future<Pose> fetchData(url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      return Pose.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load data');
     }

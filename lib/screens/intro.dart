@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yovie_app/components/buttons/custom_button.dart';
+import 'package:yovie_app/components/texts/footnote.dart';
 import 'package:yovie_app/navigation.dart';
 import 'package:yovie_app/screens/home.dart';
 import 'package:yovie_app/theme/style.dart';
@@ -49,7 +50,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                   text: TextSpan(
                     text: 'y',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 240, 182, 28),
+                        color: CustomTheme.yellowColor,
                       fontSize: 80,
                       fontWeight: FontWeight.bold
                     ), /*defining default style is optional */
@@ -61,7 +62,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                           style: TextStyle(color: Color.fromARGB(255, 77, 100, 73))),
                       TextSpan(
                           text: 'i',
-                          style: TextStyle(color: Color.fromARGB(255, 240, 182, 28))),
+                          style: TextStyle(color: CustomTheme.yellowColor)),
                       TextSpan(
                           text: 'e',
                           style: TextStyle(color: Color.fromARGB(255, 213, 167, 121))),
@@ -71,24 +72,20 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 Spacer(),
                 Image(image: new AssetImage('assets/gifs/dwipada.gif')),
                 Spacer(),
-                CustomButton(
-                  onTap: (){
-                    Util.navigateToPage(Navigation(), context);
-                  },
-                  title: "GET STARTED",
+                Container(
+                  width: double.infinity,
+                  child: CustomButton(
+                    onTap: (){
+                      Util.navigateToPage(Navigation(), context);
+                    },
+                    title: "GET STARTED",
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: Center(
-                    child: Text(
-                      "This is a demo app meant as an introduction to Flutter used in workshops for developers",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                      ),
-                    ),
-                  ),
+                  child: Footnote(
+                    title: "This is a demo app meant as an introduction to Flutter used in workshops for developers"
+                  )
                 ),
               ],
             )

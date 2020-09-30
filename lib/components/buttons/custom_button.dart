@@ -31,25 +31,22 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 2,
-        textColor: Colors.white,
-        onPressed: widget.onTap,
-        color: CustomTheme.buttonColor,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(
-            widget.title,
-            style: TextStyle(
-              fontSize: 18,
-            ),
+    return RaisedButton(
+      elevation: 2,
+      textColor: Colors.white,
+      onPressed: widget.onTap,
+      color: CustomTheme.buttonColor,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text(
+          widget.title,
+          style: TextStyle(
+            fontSize: 18,
           ),
         ),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-        ),
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
