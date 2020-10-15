@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:yovie_app/theme/style.dart';
 
 class CustomAppbar extends StatefulWidget {
+  final String title;
+
+  const CustomAppbar ({Key key, this.title}) : super (key: key);
+
   @override
   _CustomAppbarState createState() => _CustomAppbarState();
 }
@@ -28,29 +32,15 @@ class _CustomAppbarState extends State<CustomAppbar> with SingleTickerProviderSt
           color: Colors.black87,
       ),
       title: Text(
-          "yogie.",
+        widget.title,
         style: TextStyle(
-          color: Colors.black87
+          color: CustomTheme.darkBlueColor,
+          fontWeight: FontWeight.bold
         ),
       ),
       automaticallyImplyLeading: false,
       elevation: 0,
       backgroundColor: Colors.transparent,
-      actions: <Widget>[
-        Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: RotatedBox(
-                quarterTurns: 1,
-                child: Icon(
-                  Icons.more_vert,
-                  size: 20,
-                ),
-              ),
-            )
-        ),
-      ],
     );
   }
 }

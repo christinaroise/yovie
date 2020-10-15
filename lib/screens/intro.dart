@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yovie_app/components/buttons/custom_button.dart';
 import 'package:yovie_app/components/texts/footnote.dart';
 import 'package:yovie_app/navigation.dart';
-import 'package:yovie_app/screens/home.dart';
 import 'package:yovie_app/theme/style.dart';
 import 'package:yovie_app/utils/utils.dart';
 
@@ -46,29 +45,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                       fontWeight: FontWeight.bold,
                   ),
                 ),
-                RichText(
-                  text: TextSpan(
-                    text: 'y',
-                    style: TextStyle(
-                        color: CustomTheme.yellowColor,
-                      fontSize: 80,
-                      fontWeight: FontWeight.bold
-                    ), /*defining default style is optional */
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'o', style: TextStyle(color: Color.fromARGB(255, 176, 225, 227))),
-                      TextSpan(
-                          text: 'g',
-                          style: TextStyle(color: Color.fromARGB(255, 77, 100, 73))),
-                      TextSpan(
-                          text: 'i',
-                          style: TextStyle(color: CustomTheme.yellowColor)),
-                      TextSpan(
-                          text: 'e',
-                          style: TextStyle(color: Color.fromARGB(255, 213, 167, 121))),
-                    ],
-                  ),
-                ),
+                decorativeTitle(),
                 Spacer(),
                 Image(image: new AssetImage('assets/gifs/dwipada.gif')),
                 Spacer(),
@@ -94,4 +71,31 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
       ),
     );
   }
+}
+
+
+Widget decorativeTitle(){
+  return RichText(
+    text: TextSpan(
+      text: 'y',
+      style: TextStyle(
+          color: CustomTheme.yellowColor,
+          fontSize: 80,
+          fontWeight: FontWeight.bold
+      ),
+      children: <TextSpan>[
+        TextSpan(
+            text: 'o', style: TextStyle(color: Color.fromARGB(255, 176, 225, 227))),
+        TextSpan(
+            text: 'g',
+            style: TextStyle(color: Color.fromARGB(255, 77, 100, 73))),
+        TextSpan(
+            text: 'i',
+            style: TextStyle(color: CustomTheme.yellowColor)),
+        TextSpan(
+            text: 'e',
+            style: TextStyle(color: Color.fromARGB(255, 213, 167, 121))),
+      ],
+    ),
+  );
 }

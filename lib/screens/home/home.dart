@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yovie_app/components/appbars/custom_appbar.dart';
-import 'package:yovie_app/components/sliders/carousel.dart';
+import 'package:yovie_app/components/texts/h2_title.dart';
+import 'package:yovie_app/components/texts/paragraph.dart';
+import 'package:yovie_app/screens/home/components/carousel.dart';
 import 'package:yovie_app/components/texts/footnote.dart';
 import 'package:yovie_app/theme/style.dart';
 
@@ -27,36 +28,39 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CustomTheme.primaryColor,
       body: SingleChildScrollView(
         child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           child: Column(
             children: [
-              CustomAppbar(),
               Container(
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.fromLTRB(25, 25, 25, 10),
                       child: Container(
                         width: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                                "Hi buddy,"
+                            H2Title(
+                              title: "Hi Sunshine,"
                             ),
-                            Text(
-                                "Let's start your journey"
-                            ),
+                            Paragraph(
+                              text: "Let's dive into your yoga experience"
+                            )
                           ],
                         ),
                       ),
                     ),
                     Carousel(),
-                    Footnote(
-                      title: "this is a footnote"
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 15, 25, 20),
+                      child: Footnote(
+                        title: "All written information in this demonstration app is fetched from yogajournal. Illustrations are purchased through Lottie"
+                      ),
                     )
                   ],
                 ),

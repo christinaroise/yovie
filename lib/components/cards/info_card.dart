@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:yovie_app/components/buttons/custom_button.dart';
 import 'package:yovie_app/components/buttons/custom_icon_button.dart';
+import 'package:yovie_app/components/texts/h1_title.dart';
+import 'package:yovie_app/components/texts/paragraph.dart';
 import 'package:yovie_app/theme/style.dart';
 
 class InfoCard extends StatefulWidget {
   final String title;
   final String subtitle;
   final String description;
+  final String imageUrl;
+  final Function onPressed;
+  final Function onPressedIcon;
 
   const InfoCard({Key key,
     this.title,
     this.subtitle,
-    this.description
+    this.description,
+    this.imageUrl,
+    this.onPressed,
+    this.onPressedIcon
 }) : super(key: key);
 
   @override
@@ -35,75 +43,75 @@ class _InfoCardState extends State<InfoCard> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Card(
-          color: CustomTheme.primaryColor,
-          elevation: 2,
-          margin: EdgeInsets.only(left: 20, right: 20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-            child: Container(
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(image: new AssetImage('assets/gifs/tempgif.gif')),
-                  Text(
-                    widget.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 40,
-                      color: CustomTheme.yellowColor,
-                    ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+      child: Card(
+        color: Colors.white,
+        elevation: 2,
+        margin: EdgeInsets.only(left: 20, right: 20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 0, 30, 30),
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 300,
+                  child: ( widget.imageUrl != null) ? Image.network(
+                    widget.imageUrl,
+                  ) : Center(child: CircularProgressIndicator()),
+                ),
+                Center(
+                  child: H1Title(
+                    title: widget.title,
+                    centered: true,
+                  )
+                ),
+                Text(
+                  widget.subtitle,
+                  style: TextStyle(
+                      color: Colors.grey,
+                      height: 1.2
                   ),
-                  Text(
-                    widget.subtitle,
-                    style: TextStyle(
-                        color: Colors.grey,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        widget.description,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.grey[800],
-                          height: 1
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Paragraph(
+                    text: widget.description,
+                    height: 1.1,
+                  )
+                ),
+                Spacer(),
+                Container(
+                  padding: EdgeInsets.only(top: 15),
+                  width: double.infinity,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 200,
+                        child: CustomButton(
+                          title: "More",
+                          onTap: widget.onPressed,
                         ),
                       ),
-                    ),
+                      Positioned(
+                        right: 0,
+                        child: CustomIconButton(
+                          onTap: widget.onPressedIcon,
+                        ),
+                      )
+                    ],
                   ),
-                  Container(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 20, 8, 20),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 200,
-                            child: CustomButton(
-                              title: "Learn more",
-                              onTap: (){},
-                            ),
-                          ),
-                          Spacer(),
-                          CustomIconButton()
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yovie_app/main.dart';
-import 'package:yovie_app/screens/home.dart';
-import 'package:yovie_app/screens/play.dart';
+import 'package:yovie_app/screens/home/home.dart';
+import 'package:yovie_app/screens/player/player.dart';
+import 'package:yovie_app/screens/playlist/playlist.dart';
 import 'package:yovie_app/theme/style.dart';
 
 class Navigation extends StatefulWidget {
@@ -15,8 +15,8 @@ class _NavigationState extends State<Navigation> with SingleTickerProviderStateM
 
   static List<Widget> _widgetOptions = <Widget>[
     Home(),
-    Play(),
-    Play(),
+    Player(),
+    Playlist(),
   ];
 
   void _onItemTapped(int index) {
@@ -44,9 +44,10 @@ class _NavigationState extends State<Navigation> with SingleTickerProviderStateM
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,
-        selectedItemColor: Colors.grey,
+        selectedItemColor: CustomTheme.darkBlueColor,
         unselectedItemColor: Colors.grey[300],
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home, size: 30),

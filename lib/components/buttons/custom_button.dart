@@ -36,12 +36,14 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
       textColor: Colors.white,
       onPressed: widget.onTap,
       color: CustomTheme.buttonColor,
+      splashColor: Colors.grey[200],
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Text(
           widget.title,
           style: TextStyle(
             fontSize: 18,
+            fontWeight: FontWeight.w800
           ),
         ),
       ),

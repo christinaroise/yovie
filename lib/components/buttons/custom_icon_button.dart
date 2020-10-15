@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:yovie_app/theme/style.dart';
 
 class CustomIconButton extends StatefulWidget {
+  final Function onTap;
+
+  const CustomIconButton ({Key key, this.onTap}) : super (key: key);
+
   @override
   _CustomIconButtonState createState() => _CustomIconButtonState();
 }
@@ -23,17 +26,19 @@ class _CustomIconButtonState extends State<CustomIconButton> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Ink(
-        decoration: const ShapeDecoration(
-          color: Color.fromARGB(255, 240, 182, 28),
-          shape: CircleBorder(),
-        ),
-        child: IconButton(
-          icon: Icon(Icons.playlist_add),
-          color: Colors.white,
-          onPressed: () {},
-        ),
+    return Container(
+      height: 46,
+      width: 46,
+      child: Center(
+        child: FloatingActionButton(
+          onPressed: widget.onTap,
+          child: Icon(
+              Icons.playlist_add,
+            color: Colors.white,
+          ),
+          backgroundColor: Color.fromARGB(255, 240, 182, 28),
+          elevation: 2,
+        )
       ),
     );
   }
